@@ -48,7 +48,7 @@ var app = {
 		
 		navigator.notification.alert(
             'Device is ready...',  // message
-            alertDismissed,         // callback
+            app.alertDismissed,         // callback
             'Notification',            // title
             'OK'                  // buttonName
         );
