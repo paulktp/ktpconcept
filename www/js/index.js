@@ -16,8 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-// Global InAppBrowser reference
-var iabRef = null; 
  
 var app = {
     // Application Constructor
@@ -37,7 +35,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-		iabRef = window.open('http://www.ktp.net/', '_blank', 'location=no,toolbar=no');
+		var iabRef = window.open('http://www.ktp.net/', '_blank', 'location=no,toolbar=no');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
