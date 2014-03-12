@@ -43,7 +43,7 @@ var app = {
 	
 		setTimeout(function() {
 			navigator.splashscreen.hide();
-		}, 6000);
+		}, 4000);
 		
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
