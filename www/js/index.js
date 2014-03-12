@@ -16,7 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- 
+var iabRef = null;
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -36,6 +37,10 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 		var iabRef = window.open('http://www.ktp.net/', '_blank', 'location=no,toolbar=no');
+		iabRef.addEventListener('loadstart', app.iabLoadStart);
+		iabRef.addEventListener('loadstop', app.iabLoadStop);
+		iabRef.removeEventListener('loaderror', app.iabLoadError);
+		iabRef.addEventListener('exit', app.iabClose);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -45,17 +50,29 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
 		
-		navigator.notification.alert(
+		/*navigator.notification.alert(
             'Device is ready...',  // message
             app.alertDismissed,         // callback
             'Notification',            // title
             'OK'                  // buttonName
-        );
+        );*/
 
     },alertDismissed:function(){
 		
+	},iabLoadStart: function(){
+		if(device.platform =="Android"){
+			navigator.notification.activityStart("Chargement", "patientez..."); 
+		}
+	},iabLoadStop: function(){
+		if(device.platform =="Android"){
+			navigator.notification.activityStop();
+		}
+	},iabLoadError: function(){
+	},iabClose: function(){
+		iabRef.removeEventListener('loadstart', app.iabLoadStart);
+		iabRef.removeEventListener('loadstop', app.iabLoadStop);
+		iabRef.removeEventListener('loaderror', app.iabLoadError);
+		iabRef.removeEventListener('exit', app.iabClose);
 	}
 };
