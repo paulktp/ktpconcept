@@ -45,5 +45,15 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
+		
+		navigator.notification.alert(
+            'Device is ready...',  // message
+            alertDismissed,         // callback
+            'Notification',            // title
+            'OK'                  // buttonName
+        );
+
+    },alertDismissed:function(){
+		
+	}
 };
