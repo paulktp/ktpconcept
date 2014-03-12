@@ -71,5 +71,5 @@ var app = {
 	},iabLoadStop: function(event){
 	},iabLoadError: function(event){
 	},iabClose: function(event){
-	},
+	}
 };
