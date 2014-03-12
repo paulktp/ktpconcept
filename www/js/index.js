@@ -37,12 +37,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-		
 		iabRef = window.open('http://www.ktp.net/', '_blank', 'location=no,toolbar=no');
-		iabRef.addEventListener('loadstart', app.iabLoadStart);
-		iabRef.addEventListener('loadstop', app.iabLoadStop);
-		iabRef.removeEventListener('loaderror', app.iabLoadError);
-		iabRef.addEventListener('exit', app.iabClose);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -64,12 +59,5 @@ var app = {
 
     },alertDismissed:function(){
 		
-	},iabLoadStart: function(event){
-		if(device.platform =="Android"){
-			navigator.notification.activityStart("Chargement", "patientez..."); 
-		}
-	},iabLoadStop: function(event){
-	},iabLoadError: function(event){
-	},iabClose: function(event){
 	}
 };
