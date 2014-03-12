@@ -36,14 +36,15 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-		var iabRef = window.open('http://www.ktp.net/', '_blank', 'location=no,toolbar=no');
-		iabRef.addEventListener('loadstart', app.iabLoadStart);
-		iabRef.addEventListener('loadstop', app.iabLoadStop);
-		iabRef.removeEventListener('loaderror', app.iabLoadError);
-		iabRef.addEventListener('exit', app.iabClose);
+		
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+	
+		setTimeout(function() {
+			navigator.splashscreen.hide();
+		}, 6000);
+		
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
@@ -57,6 +58,12 @@ var app = {
             'Notification',            // title
             'OK'                  // buttonName
         );*/
+		
+		var iabRef = window.open('http://www.ktp.net/', '_blank', 'location=no,toolbar=no');
+		iabRef.addEventListener('loadstart', app.iabLoadStart);
+		iabRef.addEventListener('loadstop', app.iabLoadStop);
+		iabRef.removeEventListener('loaderror', app.iabLoadError);
+		iabRef.addEventListener('exit', app.iabClose);
 
     },alertDismissed:function(){
 		
